@@ -15,7 +15,7 @@ func main() {
 
 	messages, err := greetings.Hellos(names)
 	if err != nil {
-		log.Fatal(err)s
+		log.Fatal(err)
 	}
 
 	fmt.Println(messages)
