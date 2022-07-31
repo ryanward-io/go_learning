@@ -1,4 +1,4 @@
-module example/hello
+module example/example
 
 go 1.18
 
