@@ -173,24 +173,159 @@ func Arrays() {
 }
 
 func Slices() {
-	var a [5]int
-	fmt.Println("emp:", a)
+	s := make([]string, 3)
+	fmt.Println("emp:", s)
 
-	a[4] = 100
+	s[0] = "a"
+	s[1] = "m"
+	s[2] = "z"
+	fmt.Println("set", s)
+	fmt.Println("get", s[2])
 
-	fmt.Println("set:", a)
-	fmt.Println("get:", a[4])
+	fmt.Println("len", len(s))
 
-	fmt.Println("len:", len(a))
+	s = append(s, "d")
+	s = append(s, "e", "f")
+	fmt.Println("apd", s)
 
-	b := [4]int{2, 4, 6, 8}
-	fmt.Println("dcl:", b)
+	c := make([]string, len(s))
+	copy(c, s)
+	fmt.Println("Copy", c)
 
-	var twoD [2][3]int
-	for i := 0; i < 2; i++ {
-		for j := 0; j < 3; j++ {
-			twoD[i][j] = i * j
+	l := s[2:5]
+	fmt.Println("sl1", l)
+
+	l = s[:5]
+	fmt.Println("sl2", l)
+
+	l = s[2:]
+	fmt.Println("sl3", l)
+
+	t := []string{"g", "h", "i"}
+	fmt.Println("Declared in one line", t)
+
+	twoD := make([][]int, 3)
+	for i := 0; i < 3; i++ {
+		innerLen := i + 1
+		twoD[i] = make([]int, innerLen)
+		for j := 0; j < innerLen; j++ {
+			twoD[i][j] = i*j + i
 		}
 	}
-	fmt.Println("2D: ", twoD)
+	fmt.Println("2d:", twoD)
+}
+
+func Maps() {
+	fmt.Println("Also called dicts in other languages")
+
+	m := make(map[string]int)
+
+	m["k1"] = 10
+	m["k2"] = 20
+	m["k3"] = 30
+
+	fmt.Println("map: ", m)
+	fmt.Println("map key: ", m["k3"])
+
+	delete(m, "k3")
+	fmt.Println("map post-delete: ", m)
+
+	_, prs := m["k3"]
+	fmt.Println("Present indicator:", prs)
+
+	n := map[string]int{"Mercury": 1, "Venus": 2, "Earth": 3}
+	fmt.Println("Map made in one line:", n)
+
+}
+
+func Ranges() {
+	nums := []int{2, 3, 4}
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	fmt.Println("sum:", sum)
+
+	for i, num := range nums {
+		if num == 3 {
+			fmt.Println("index", i)
+		}
+	}
+
+	kvs := map[string]string{"a": "apple", "b": "berry"}
+	for k, v := range kvs {
+		fmt.Printf("%s -> %s\n", k, v)
+	}
+
+	for i, c := range "Golang" {
+		fmt.Println(i, c)
+	}
+}
+
+func Functions() {
+	plus := func(a int, b int) int {
+		return a + b
+	}
+
+	prod := func(a, b int) int {
+		return a * b
+	}
+
+	plus_result := plus(5, 7)
+	fmt.Println("Add two numbers:", plus_result)
+
+	prod_result := prod(5, 7)
+	fmt.Println("Product:", prod_result)
+
+	vals := func() (int, int, int) {
+		return 3, 10, 15
+	}
+
+	a, _, c := vals()
+	fmt.Println("Multiple return values:", a, c)
+
+	sum_any := func(nums ...int) {
+		fmt.Print(nums, " ")
+		total := 0
+
+		for _, num := range nums {
+			total += num
+		}
+		fmt.Println(total)
+	}
+
+	sum_any(4, 8)
+	sum_any(6, 15, 8, 3, 32)
+
+	num_slice := []int{1, 2, 3, 4}
+	sum_any(num_slice...)
+}
+
+func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+
+func Recursion() {
+	fmt.Println("4!:", factorial(4))
+	fmt.Println("7!:", factorial(7))
+
+	// required for recursive in nexted functions
+	var fib func(n int) int
+
+	fib = func(n int) int {
+		if n < 2 {
+			return n
+		}
+
+		return fib(n-1) + fib(n-2)
+	}
+
+	fmt.Println("Fibbonacci 1:", fib(1))
+	fmt.Println("Fibbonacci 3:", fib(3))
+	fmt.Println("Fibbonacci 5:", fib(5))
+	fmt.Println("Fibbonacci 7:", fib(7))
+
 }

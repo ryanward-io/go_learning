@@ -16,6 +16,12 @@ func main() {
 	run_func(e.Ifelse, "If-Else conditions")
 	run_func(e.Switches, "Switches")
 	run_func(e.Arrays, "Arrays")
+	run_func(e.Slices, "Slices")
+	run_func(e.Maps, "Maps")
+	run_func(e.Ranges, "Ranges")
+	run_func(e.Functions, "Functions")
+	run_func(e.Recursion, "Recursion")
+
 }
 
 func run_func(f func(), val string) {
