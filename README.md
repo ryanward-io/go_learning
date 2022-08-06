@@ -1,3 +1,4 @@
 # A repo for working on some Go tutorials
 
-greetings, hellow and hello_world were followed from [here](https://go.dev/doc/tutorial/module-conclusion)
+greetings and hello were followed from [here](https://go.dev/doc/tutorial/module-conclusion)
+hello_world was follwed [here](https://gobyexample.com/)
